@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>detection</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/design.css' %}">
+</head>
+<body>
+    <header class="header">
+        <img onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo"></img>
+        <nav class="nav-items">
+          <a href="index.html">Home</a>
+          <a href="detection.html">detection</a>
+          <a href="company.html">Company</a>
+        </nav>
+      </header>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동영상 업로드 및 분석 프로토 타입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #videoPlayer {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>동영상 업로드 및 분석</h1>
+
+    <input type="file" accept="video/*" id="videoInput" onchange="playAndAnalyze()">
+    <video controls id="videoPlayer" onended="analyzeVideo()">
+        현재 브라우저는 video 태그를 지원하지 않습니다.
+    </video>
+
+    <!-- 분석하기 버튼 추가 -->
+    <button onclick="redirectToDetection()">분석하기</button>
+
+    <script>
+        function playAndAnalyze() {
+            const videoInput = document.getElementById('videoInput');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            const file = videoInput.files[0];
+
+            if (file) {
+                const objectURL = URL.createObjectURL(file);
+                videoPlayer.src = objectURL;
+                videoPlayer.play();
+            }
+        }
+
+        function analyzeVideo() {
+            // 동영상이 종료되면 분석 페이지로 이동하는 코드를 여기에 추가하세요.
+            alert('동영상 재생이 완료되었습니다. 분석 페이지로 이동합니다.');
+           // redirectToDetection();
+        }
+
+        // 분석 페이지로 이동하는 함수
+        function redirectToDetection() {
+            window.location.href = 'detetion.html'; // 분석 페이지의 실제 주소로 변경해주세요.
+        }
+    </script>
+</body>
+</html>
