@@ -9,32 +9,11 @@
 </head>
 <body>
     <header class="header">
-        <img onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo"></img>
         <nav class="nav-items">
-          <a href="home.html">Home</a>
-          <a href="upload.html">detection</a>
-          <a href="detection.html">Company</a>
+        <img onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
         </nav>
       </header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동영상 업로드 및 분석 프로토 타입</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-
-        #videoPlayer {
-            max-width: 100%;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
     <h1>동영상 업로드 및 분석</h1>
 
     <input type="file" accept="video/*" id="videoInput" onchange="playAndAnalyze()">

@@ -9,29 +9,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>scooter detection</title>
   <!-- HTTPS로 로드되도록 변경 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/design.css' %}">
 </head>
 
 <body>
   <header class="header">
-    <img onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo"></img>
+    <img class="logo" onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" alt="logo">
+    <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
     <nav class="nav-items">
-      <a href="home.html">Home</a>
-      <a href="upload.html">detection임임</a>
-      <a href="detection.html">Company</a>
-      <a href = "#">Policy</a>
     </nav>
   </header>
   <main>
     <div class="intro">
-      <h1>Kickboard Illegal Detection</h1>
-      <p>This is a program to detect illegal parking of kickboards near bus stops.</p>
-      <button onclick="movePage()">탐지 시작하기</button>
+      <h1>전동킥보드 불법 주정차 위반 탐지</h1>
     </div>
     <script>
-
         function movePage() {
         window.location.href = '{% url "upload" %}';
         }
@@ -39,44 +33,27 @@
     <div class="achievements">
       <div class="work">
         <i class="fas fa-bus"></i>
-        <p class="work-heading">BusStation</p>
-        <p class="work-text">버스 정류장과 킥보드 불법 탐지 ~~~</p>
-      </div>
-      <div class="work">
-        <i class="fas fa-camera"></i>
-        <p class="work-heading">YOLO computer vision</p>
-        <p class="work-text">버스 블랙 박스를 통한 객체 탐지</p>
+        <p class="work-heading">버스정류장</p>
+        <p class="work-text"></p>
       </div>
       <div class="work">
         <i class="fas fa-subway"></i>
-        <p class="work-heading">Subway</p>
-        <p class="work-text">지하철역도 할 수 있음 할게요~~ 아님 보도 블럭</p>
+        <p class="work-heading">지하철역</p>
+        <p class="work-text"></p>
+      </div>
+      <div class="work">
+        <i class="fas fa-traffic-light"></i>
+        <p class="work-heading">횡단보도</p>
+        <p class="work-text"></p>
+      </div>
+      <div class="work">
+        <i class="far fa-keyboard"></i>
+        <p class="work-heading">점자블록</p>
+        <p class="work-text"></p>
       </div>
     </div>
-    <div class="about-me">
-      <div class="about-me-text">
-        <h2>About Me</h2>
-        <p>kt와 함께하는 ai+x 선도 인재 양성 프로그램</p>
-      </div>
-      <img src="{% static 'img/img_1.png' %}" alt="대체 텍스트"></img>
+      <button class="btnRed" onclick="movePage()">신고하기</button>
   </main>
-  <footer class="footer">
-    <div class="copy">&copy; 2022 Developer</div>
-    <div class="bottom-links">
-      <div class="links">
-        <span>More Info</span>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="links">
-        <span>Social Links</span>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </footer>
 </body>
 
 </html>
