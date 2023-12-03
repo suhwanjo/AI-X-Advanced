@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <nav class="nav-items">
-        <img onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
+        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
         </nav>
       </header>
 
@@ -22,9 +22,17 @@
     </video>
 
     <!-- 분석하기 버튼 추가 -->
-    <button onclick="redirectToDetection()">분석하기</button>
+    <button onclick="showLoading()">분석하기</button>
+    <!-- 로딩 창 -->
+    <div class="loading" id="loading">
+        <img src="{% static 'img/icons8-loading.gif' %}" alt="Loading">
+    </div>
 
     <script>
+
+        function movePage_home() {
+        window.location.href = '{% url "home" %}';
+        }
         function playAndAnalyze() {
             const videoInput = document.getElementById('videoInput');
             const videoPlayer = document.getElementById('videoPlayer');
@@ -47,6 +55,12 @@
         // 분석 페이지로 이동하는 함수
         function redirectToDetection() {
             window.location.href = '{% url "result" %}'; // 분석 페이지의 실제 주소로 변경해주세요.
+        }
+
+        function showLoading() {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'flex'; // 로딩 창 표시
+            setTimeout(redirectToDetection, 3000); // 3초 후에 분석 페이지로 이동 (3초는 예시입니다)
         }
     </script>
 </body>

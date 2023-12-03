@@ -10,13 +10,26 @@
   <title>scooter detection</title>
   <!-- HTTPS로 로드되도록 변경 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'css/design.css' %}">
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home_menu.css' %}">
 </head>
 
 <body>
+    <header>
+        <div class="box">
+          <ul>
+            <li><a href="#">portfolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <nav class="nav-items">
+        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
+        </nav>
+    </header>
+
     <div class="logo-container">
-            <img class="logo" onclick="movePage()" src="{% static 'img/logo.png' %}" alt="logo">
             <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
     </div>
     <div class="intro">
@@ -28,8 +41,32 @@
     </div>
 
     <script>
-        function movePage() {
+        $(function() {
+
+      var w = $(window).width(),
+        h = $(window).height();
+      //$('section').width(w);
+      $('section').height(h);
+      $('menu .container').height(h - 60);
+      $('body').prepend('<div id="overlay">');
+
+      $('#menu').click(function() {$('html').addClass('active');});
+      $('#close-menu').click(function() {$('html').removeClass('active');});
+      $('#overlay').click(function() {$('html').removeClass('active');});
+      $(window).resize(function() {
+        var w = $(window).width(),
+          h = $(window).height();
+        //$('section').width(w);
+        $('section').height(h);
+        $('menu .container').height(h - 60);
+      });
+
+});
+        function movePage_upload() {
         window.location.href = '{% url "upload" %}';
+        }
+         function movePage_home() {
+        window.location.href = '{% url "home" %}';
         }
     </script>
     <div class="achievements">
@@ -54,7 +91,7 @@
         <p class="work-text"></p>
       </div>
     </div>
-  <button class="btnRed" onclick="movePage()">REPORT</button>
+  <button class="btnRed" onclick="movePage_upload()">REPORT</button>
 </body>
 
 </html>

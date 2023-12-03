@@ -16,7 +16,7 @@ body {
 }
 
 .header .logo {
-    width: 60px; /* 필요한 만큼 너비 조절 */
+    width: 100px; /* 필요한 만큼 너비 조절 */
     height: auto; /* 가로세로 비율 유지 */
     cursor: pointer;
 }
@@ -108,6 +108,7 @@ body {
   font-family:'NanumGothicB';
   font-weight:bold;
   margin: 20px 0px; /* Adjust the top and bottom margins as needed */
+  cursor: pointer;
 }
 
 .detection_list {
