@@ -15,16 +15,18 @@
 </head>
 
 <body>
-  <header class="header">
-    <img class="logo" onclick="movePage()" src="{% static 'img/logo.png' %}" href="home.html" alt="logo">
-    <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
-    <nav class="nav-items">
-    </nav>
-  </header>
-  <main>
-    <div class="intro">
-      <h1>전동킥보드 불법 주정차 위반 탐지</h1>
+    <div class="logo-container">
+            <img class="logo" onclick="movePage()" src="{% static 'img/logo.png' %}" alt="logo">
+            <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
     </div>
+    <div class="intro">
+      <h1>Electric Kickboard Illegal Parking Automatic Detection</h1>
+    </div>
+
+    <div class = 'detection_list'>
+      DETECTION LIST
+    </div>
+
     <script>
         function movePage() {
         window.location.href = '{% url "upload" %}';
@@ -33,27 +35,26 @@
     <div class="achievements">
       <div class="work">
         <i class="fas fa-bus"></i>
-        <p class="work-heading">버스정류장</p>
+        <p class="work-heading">Bus stop</p>
         <p class="work-text"></p>
       </div>
       <div class="work">
         <i class="fas fa-subway"></i>
-        <p class="work-heading">지하철역</p>
+        <p class="work-heading">Subway station</p>
         <p class="work-text"></p>
       </div>
       <div class="work">
         <i class="fas fa-traffic-light"></i>
-        <p class="work-heading">횡단보도</p>
+        <p class="work-heading">Crosswalk</p>
         <p class="work-text"></p>
       </div>
       <div class="work">
         <i class="far fa-keyboard"></i>
-        <p class="work-heading">점자블록</p>
+        <p class="work-heading">Sidewalk block</p>
         <p class="work-text"></p>
       </div>
     </div>
-      <button class="btnRed" onclick="movePage()">신고하기</button>
-  </main>
+  <button class="btnRed" onclick="movePage()">REPORT</button>
 </body>
 
 </html>
