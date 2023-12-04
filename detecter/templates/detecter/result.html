@@ -3,17 +3,29 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>company</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/design.css' %}">
+    <title>detection</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home_menu.css' %}">
+        <link rel="stylesheet" href="{% static 'css/design.css' %}">
 </head>
-<body>
-    <header class="header">
-        <img onclick = 'move_home_Page()' src ="{% static 'img/logo.png' %}" href="home.html" class="logo">
-        <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
-        <nav class="nav-items">
-        </nav>
-      </header>
+
+<body class = "upload_body">
+    <header>
+        <img src="{% static 'img/deer.png' %}" class = "logo_1" alt="logo_1">
+        <img onclick="move_home_Page()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
+        <div class="box">
+          <ul>
+            <li><a href='{% url "home" %}'>홈</a></li>
+            <li><a href='{% url "upload" %}'>신고 서비스</a></li>
+            <li><a href='{% url "result" %}'>신고 결과</a></li>
+            <li><a href="#">공지 사항</a></li>
+          </ul>
+
+        </div>
+    </header>
+    <h1> 분석이 완료 되었습니다.</h1>
+
       <script>
 
         function move_home_Page() {

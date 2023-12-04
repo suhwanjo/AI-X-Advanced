@@ -6,6 +6,41 @@ body {
   box-sizing: border-box;
 }
 
+.upload_body {
+
+  background: #FFF;
+  color: #444;
+  font-family: 'Lato', sans-serif;
+  margin: 0 auto;
+  overflow-X: hidden;
+  overflow-Y: auto;
+  padding: 0;
+  height: 900px;
+
+
+
+}
+.upload_body h1 {
+    margin-top: 100px; /* H1 태그의 위쪽 여백 추가 */
+    text-align: center;
+    font-family: 'Sriracha', sans-serif; /* 원하는 폰트 패밀리 사용 */
+    font-size: 2em; /* 필요한 만큼 폰트 크기 조절 */
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.video_center{
+ margin: 0 auto;
+ width: 1000px;
+ display: block;
+}
+input[type="file"] {
+  position: fixed;
+  bottom: 10px; /* 하단 여백 조정 */
+  left: 10px; /* 좌측 여백 조정 */
+}
 .logo-container {
     position: absolute;
     left: 40px; /* 필요한 만큼 왼쪽 위치 조절 */
@@ -15,16 +50,22 @@ body {
     background-color: white;
 }
 
-.header .logo {
-    width: 100px; /* 필요한 만큼 너비 조절 */
-    height: auto; /* 가로세로 비율 유지 */
+.logo {
+    width: 80px; /* 필요한 만큼 너비 조절 */
+    height: 50px; /* 가로세로 비율 유지 */
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 10px;
 }
 
-.header .logo_1 {
-    width: 60px; /* 필요한 만큼 너비 조절 */
-    height: auto; /* 가로세로 비율 유지 */
-    margin-left: 30px; /* 필요한 만큼 마진 조절 */
+.logo_1 {
+    width: 80px; /* 필요한 만큼 너비 조절 */
+    height: 50px; /* 가로세로 비율 유지 */
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 10px;
 }
 
 .intro h1 {
@@ -34,6 +75,21 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
+
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("../img/img_jin.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0px 0px 20px 0px; /* Adjust the top and bottom margins as needed */
 }
 
 .nav-items {
@@ -54,29 +110,7 @@ body {
 파일에서 {% static %} 템플릿 태그를 사용할 때 발생하는 문제는,
  CSS 파일은 Django의 템플릿 엔진에 의해 처리되지 않기 때문입니다.
  따라서 CSS 파일 안에서 직접적으로 Django 템플릿 태그를 사용할 수 없습니다.*/
-.intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("../img/img_jin.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0px 0px 20px 0px; /* Adjust the top and bottom margins as needed */
-}
 
-.intro h1 {
-  font-family: sans-serif;
-  font-size: 20px;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 0;
-
-}
 
 .intro p {
   font-size: 20px;
@@ -103,6 +137,20 @@ body {
   color: #fff;
   border-radius: 0.4rem;
   background: #e42215;
+  font-size: 1.6rem;
+  width: 100%;
+  font-family:'NanumGothicB';
+  font-weight:bold;
+  margin: 20px 0px; /* Adjust the top and bottom margins as needed */
+  cursor: pointer;
+}
+
+.btnBlue {
+  height: 4.4rem;
+  padding: 0 1rem;
+  color: #fff;
+  border-radius: 0.4rem;
+  background: #9fcee1;
   font-size: 1.6rem;
   width: 100%;
   font-family:'NanumGothicB';
@@ -234,3 +282,12 @@ body {
   padding: 10px 20px;
 }
 
+menu {
+    display: none;
+    /* 다른 스타일링 속성 추가 */
+    }
+    /* 메뉴가 열린 상태 */
+menu.open {
+    display: block;
+    /* 열린 상태의 스타일링 속성 추가 */
+}

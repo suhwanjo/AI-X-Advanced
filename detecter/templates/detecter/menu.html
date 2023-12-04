@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-{% load static %}
 
-<html lang="ko">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>scooter detection</title>
-  <!-- HTTPS로 로드되도록 변경 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'css/home_menu.css' %}">
-  <!-- 여기에 사이드바 관련 CSS를 추가해주세요 -->
-  <style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
     /* 노멀라이즈 시작 */
     body, ul, li {
     margin: 0;
@@ -171,113 +159,56 @@
     .side-bar:hover {
     transform: translate(-20px, 0);   /* 둥근 모서리의 너비만큼 숨겨주기 */
     }
-  </style>
+/* 사이드바 끝 */
+
+/* 커스텀 끝 */
+
+</style>
 </head>
-
-<body>
-  <header>
-    <img src="{% static 'img/deer.png' %}" class="logo_1" alt="logo_1">
-    <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
-    <div class="box">
-      <ul>
-        <li><a href='{% url "home" %}'>홈</a></li>
-        <li><a href='{% url "upload" %}'>신고 서비스</a></li>
-        <li><a href='{% url "result" %}'>신고 결과</a></li>
-        <li><a href="#">공지 사항</a></li>
-      </ul>
-
-    </div>
-  </header>
-
-  <!-- 여기에 사이드바 HTML 추가 -->
-  <aside class="side-bar">
-    <section class="side-bar__icon-box">
-      <section class="side-bar__icon-1">
-        <div></div>
-        <div></div>
-        <div></div>
-      </section>
+<aside class="side-bar">
+  <section class="side-bar__icon-box">
+    <section class="side-bar__icon-1">
+      <div></div>
+      <div></div>
+      <div></div>
     </section>
-    <ul>
-      <li>
-        <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
-        <ul>
-          <li><a href="#">text1</a></li>
-          <li><a href="#">text2</a></li>
-          <li><a href="#">text3</a></li>
-          <li><a href="#">text4</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">menu2</a>
-        <ul>
-          <li><a href="#">text1</a></li>
-          <li><a href="#">text2</a></li>
-          <li><a href="#">text3</a></li>
-          <li><a href="#">text4</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">menu3</a>
-        <ul>
-          <li><a href="#">text1</a></li>
-          <li><a href="#">text2</a></li>
-          <li><a href="#">text3</a></li>
-          <li><a href="#">text4</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">menu4</a>
-        <ul>
-          <li><a href="#">text1</a></li>
-          <li><a href="#">text2</a></li>
-          <li><a href="#">text3</a></li>
-          <li><a href="#">text4</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <div class="intro">
-    <h1>Electric Kickboard Illegal Parking Automatic Detection</h1>
-  </div>
-
-  <div class='detection_list'>
-    DETECTION LIST
-  </div>
-
-  <script>
-    function movePage_upload() {
-      window.location.href = '{% url "upload" %}';
-    }
-
-    function movePage_home() {
-      window.location.href = '{% url "home" %}';
-    }
-  </script>
-  <div class="achievements">
-    <div class="work">
-      <i class="fas fa-bus"></i>
-      <p class="work-heading">Bus stop</p>
-      <p class="work-text"></p>
-    </div>
-    <div class="work">
-      <i class="fas fa-subway"></i>
-      <p class="work-heading">Subway station</p>
-      <p class="work-text"></p>
-    </div>
-    <div class="work">
-      <i class="fas fa-traffic-light"></i>
-      <p class="work-heading">Crosswalk</p>
-      <p class="work-text"></p>
-    </div>
-    <div class="work">
-      <i class="far fa-keyboard"></i>
-      <p class="work-heading">Sidewalk block</p>
-      <p class="work-text"></p>
-    </div>
-  </div>
-  <button class="btnRed" onclick="movePage_upload()">REPORT</button>
-</body>
-
-</html>
+  </section>
+  <ul>
+    <li>
+      <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+      <ul>
+        <li><a href="#">text1</a></li>
+        <li><a href="#">text2</a></li>
+        <li><a href="#">text3</a></li>
+        <li><a href="#">text4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">menu2</a>
+      <ul>
+        <li><a href="#">text1</a></li>
+        <li><a href="#">text2</a></li>
+        <li><a href="#">text3</a></li>
+        <li><a href="#">text4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">menu3</a>
+      <ul>
+        <li><a href="#">text1</a></li>
+        <li><a href="#">text2</a></li>
+        <li><a href="#">text3</a></li>
+        <li><a href="#">text4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">menu4</a>
+      <ul>
+        <li><a href="#">text1</a></li>
+        <li><a href="#">text2</a></li>
+        <li><a href="#">text3</a></li>
+        <li><a href="#">text4</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>

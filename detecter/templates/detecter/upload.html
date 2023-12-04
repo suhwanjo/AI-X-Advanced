@@ -4,25 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>detection</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/design.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home_menu.css' %}">
+        <link rel="stylesheet" href="{% static 'css/design.css' %}">
 </head>
-<body>
-    <header class="header">
-        <nav class="nav-items">
-        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
-        </nav>
-      </header>
 
-    <h1>동영상 업로드 및 분석</h1>
+<body class = "upload_body">
+    <header>
+        <img src="{% static 'img/deer.png' %}" class = "logo_1" alt="logo_1">
+        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
+        <div class="box">
+          <ul>
+            <li><a href='{% url "home" %}'>홈</a></li>
+            <li><a href='{% url "upload" %}'>신고 서비스</a></li>
+            <li><a href='{% url "result" %}'>신고 결과</a></li>
+            <li><a href="#">공지 사항</a></li>
+          </ul>
 
-    <input type="file" accept="video/*" id="videoInput" onchange="playAndAnalyze()">
-    <video controls id="videoPlayer" onended="analyzeVideo()">
+        </div>
+    </header>
+    <h1>Video upload and analysis</h1>
+    <video class="video_center" width  = "500"  height="500" controls id="videoPlayer" onended="analyzeVideo()">
         현재 브라우저는 video 태그를 지원하지 않습니다.
     </video>
 
     <!-- 분석하기 버튼 추가 -->
-    <button onclick="showLoading()">분석하기</button>
+    <button class = "btnBlue" onclick="document.getElementById('videoInput').click()">select video</button>
+    <input type="file" accept="video/*" id="videoInput" style="display: none;" onchange="playAndAnalyze()">
+    <button class="btnRed" onclick="showLoading()">report</button>
     <!-- 로딩 창 -->
     <div class="loading" id="loading">
         <img src="{% static 'img/icons8-loading.gif' %}" alt="Loading">
@@ -49,7 +59,7 @@
         function analyzeVideo() {
             // 동영상이 종료되면 분석 페이지로 이동하는 코드를 여기에 추가하세요.
             alert('동영상 재생이 완료되었습니다. 분석 페이지로 이동합니다.');
-           // redirectToDetection();
+           showLoading();
         }
 
         // 분석 페이지로 이동하는 함수

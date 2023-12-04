@@ -40,7 +40,7 @@ section,
 }
 
 header {
-  background: #934242;
+  background: #fff;
   color : black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
   height: 60px;
@@ -111,15 +111,8 @@ html.active #overlay {
   transition: all .5s ease-in-out;
 }
 
-#home,
-
-
-
-
-
-
 .sign-up {
-  background: #FF5959;
+  background: #ffffff;
   border: 1px solid #FF5959;
   color: #FFF;
   font-family: 'Abel', sans-serif;
@@ -177,17 +170,6 @@ section {
   transition: all .5s ease-in-out;
 }
 
-#intro {
-  background-image: url('https://goo.gl/BlNbJE');
-}
-
-#portfolio {
-  background-image: url('https://goo.gl/Uwkg0I');
-}
-
-#blog {
-  background-image: url('https://goo.gl/Wy3PSL');
-}
 
 html.active,
 html.active body {

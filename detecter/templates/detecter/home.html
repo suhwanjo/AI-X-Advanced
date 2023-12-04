@@ -16,22 +16,21 @@
 
 <body>
     <header>
+        <img src="{% static 'img/deer.png' %}" class = "logo_1" alt="logo_1">
+        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
         <div class="box">
           <ul>
-            <li><a href="#">portfolio</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+             <li><a href='{% url "home" %}'>홈</a></li>
+            <li><a href='{% url "upload" %}'>신고 서비스</a></li>
+            <li><a href='{% url "result" %}'>신고 결과</a></li>
+            <li><a href="#">공지 사항</a></li>
           </ul>
+
         </div>
-        <nav class="nav-items">
-        <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" href="home.html" class="logo" alt="logo">
-        </nav>
     </header>
 
-    <div class="logo-container">
-            <img class="logo_1" src="{% static 'img/deer.png' %}" alt="logo_1">
-    </div>
+
+
     <div class="intro">
       <h1>Electric Kickboard Illegal Parking Automatic Detection</h1>
     </div>
@@ -41,27 +40,6 @@
     </div>
 
     <script>
-        $(function() {
-
-      var w = $(window).width(),
-        h = $(window).height();
-      //$('section').width(w);
-      $('section').height(h);
-      $('menu .container').height(h - 60);
-      $('body').prepend('<div id="overlay">');
-
-      $('#menu').click(function() {$('html').addClass('active');});
-      $('#close-menu').click(function() {$('html').removeClass('active');});
-      $('#overlay').click(function() {$('html').removeClass('active');});
-      $(window).resize(function() {
-        var w = $(window).width(),
-          h = $(window).height();
-        //$('section').width(w);
-        $('section').height(h);
-        $('menu .container').height(h - 60);
-      });
-
-});
         function movePage_upload() {
         window.location.href = '{% url "upload" %}';
         }
