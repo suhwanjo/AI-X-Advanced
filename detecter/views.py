@@ -10,3 +10,6 @@ def upload(request):
 
 def result(request):
     return render(request,'detecter/result.html')
+
+def notice(request):
+    return render(request,'detecter/notice.html')
