@@ -16,10 +16,10 @@
         <img onclick="movePage_home()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
         <div class="box">
           <ul>
-            <li><a href='{% url "home" %}'>홈</a></li>
-            <li><a href='{% url "upload" %}'>신고 서비스</a></li>
-            <li><a href='{% url "result" %}'>신고 결과</a></li>
-            <li><a href='{% url "notice" %}'>공지 사항</a></li>
+            <li><a href='{% url "home" %}'>home</a></li>
+            <li><a href='{% url "upload" %}'>reporting service</a></li>
+            <li><a href='{% url "result" %}'>reporting result</a></li>
+            <li><a href='{% url "notice" %}'>notice</a></li>
           </ul>
 
         </div>
@@ -30,9 +30,9 @@
     </video>
 
     <!-- 분석하기 버튼 추가 -->
-    <button class = "btnBlue" onclick="document.getElementById('videoInput').click()">select video</button>
+    <button class = "btnBlue" onclick="document.getElementById('videoInput').click()">SELECT VIDEO</button>
     <input type="file" accept="video/*" id="videoInput" style="display: none;" onchange="playAndAnalyze()">
-    <button class="btnRed" onclick="showLoading()">report</button>
+    <button class="btnRed" onclick="showLoading()">REPORT</button>
     <!-- 로딩 창 -->
     <div class="loading" id="loading">
         <img src="{% static 'img/icons8-loading.gif' %}" alt="Loading">

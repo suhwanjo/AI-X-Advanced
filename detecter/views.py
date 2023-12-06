@@ -13,3 +13,6 @@ def result(request):
 
 def notice(request):
     return render(request,'detecter/notice.html')
+
+def result2(request):
+    return render(request,'detecter/result2.html')

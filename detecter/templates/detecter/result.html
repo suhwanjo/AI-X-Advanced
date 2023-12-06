@@ -24,14 +24,20 @@
 
         </div>
     </header>
-    <h1> 분석이 완료 되었습니다.</h1>
+    <h1> 탐지된 킥보드 보여주는 페이지</h1>
+
+    <video class="video_center" width  = "500"  height="500" controls id="videoPlayer" onended="analyzeVideo()">
+        현재 브라우저는 video 태그를 지원하지 않습니다.
+    </video>
 
       <script>
 
-        function move_home_Page() {
-        window.location.href = '{% url "home" %}'; /* 이동하려는 페이지의 URL을 여기에 넣어주세요 */
+        function move_result2_Page() {
+        window.location.href = '{% url "result2" %}'; /* 이동하려는 페이지의 URL을 여기에 넣어주세요 */
         }
 
     </script>
+
+    <button class="btnRed" onclick="move_result2_Page()">REPORT</button>
 </body>
 </html>

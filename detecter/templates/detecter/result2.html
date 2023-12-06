@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>detection</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home_menu.css' %}">
+        <link rel="stylesheet" href="{% static 'css/design.css' %}">
+</head>
+
+<body class = "upload_body">
+    <header>
+        <img src="{% static 'img/deer.png' %}" class = "logo_1" alt="logo_1">
+        <img onclick="move_home_Page()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
+        <div class="box">
+          <ul>
+            <li><a href='{% url "home" %}'>home</a></li>
+            <li><a href='{% url "upload" %}'>reporting service</a></li>
+            <li><a href='{% url "result" %}'>reporting result</a></li>
+            <li><a href='{% url "notice" %}'>notice</a></li>
+          </ul>
+
+        </div>
+    </header>
+    <h1> 불법 킥보드 정보 보여주는 페이지</h1>
+
+      <script>
+
+        function move_home_Page() {
+        window.location.href = '{% url "home" %}'; /* 이동하려는 페이지의 URL을 여기에 넣어주세요 */
+        }
+
+    </script>
+
+    <button class="btnBlue" onclick="move_home_Page()">RETURN</button>
+</body>
+</html>
