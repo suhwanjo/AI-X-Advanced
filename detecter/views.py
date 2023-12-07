@@ -16,3 +16,6 @@ def notice(request):
 
 def result2(request):
     return render(request,'detecter/result2.html')
+
+def notice_view(request):
+    return render(request, 'detecter/notice_view.html')
