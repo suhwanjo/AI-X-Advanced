@@ -43,17 +43,51 @@
         function movePage_home() {
         window.location.href = '{% url "home" %}';
         }
-        function playAndAnalyze() {
-            const videoInput = document.getElementById('videoInput');
-            const videoPlayer = document.getElementById('videoPlayer');
 
-            const file = videoInput.files[0];
+    function playAndAnalyze() {
+    const videoInput = document.getElementById('videoInput');
+    const videoPlayer = document.getElementById('videoPlayer');
 
-            if (file) {
-                const objectURL = URL.createObjectURL(file);
-                videoPlayer.src = objectURL;
-                videoPlayer.play();
+    const file = videoInput.files[0];
+
+    if (file) {
+        const objectURL = URL.createObjectURL(file);
+        videoPlayer.src = objectURL;
+        videoPlayer.play();
+
+        // CSRF 토큰을 가져오기
+        const csrftoken = getCSRFToken();
+
+        // Send the file to the Django backend with CSRF token
+        const formData = new FormData();
+        formData.append('video', file);
+
+        fetch('{% url "upload_video" %}', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Server response:', data);
+            // Optionally, you can redirect the user to another page after the upload is complete
+            // movePage_home();
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+        // CSRF 토큰을 가져오는 함수
+        function getCSRFToken() {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith('csrftoken=')) {
+                    return cookie.substring('csrftoken='.length, cookie.length);
+                }
             }
+            return null;
         }
 
         function analyzeVideo() {

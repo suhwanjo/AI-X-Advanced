@@ -122,6 +122,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'detecter','static'),
 )
 
+VIDEO_ROOT = os.path.join(BASE_DIR, 'static', 'video')
+VIDEO_URL = '/static/video/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
