@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="{% static 'css/design.css' %}">
 </head>
 
-<body class = "upload_body">
+<body class="upload_body">
     <header>
-        <img src="{% static 'img/deer.png' %}" class = "logo_1" alt="logo_1">
+        <img src="{% static 'img/deer.png' %}" class="logo_1" alt="logo_1">
         <img onclick="move_home_Page()" src="{% static 'img/logo.png' %}" class="logo" alt="logo">
         <div class="box">
           <ul>
@@ -21,21 +21,19 @@
             <li><a href='{% url "result" %}'>reporting result</a></li>
             <li><a href='{% url "notice" %}'>notice</a></li>
           </ul>
-
         </div>
     </header>
-    <h1> 탐지된 킥보드 보여주는 페이지</h1>
+    <h1>ELECTRIC KICKBOARD DETECTION RESULT</h1>
 
-    <video class="video_center" width  = "500"  height="500" controls id="videoPlayer" onended="analyzeVideo()">
+    <video class="video_center" width="500" height="500" controls id="videoPlayer" onended="analyzeVideo()">
+        <source src="{% static 'result/best.mp4/best.mp4' %}" type="video/mp4">
         현재 브라우저는 video 태그를 지원하지 않습니다.
     </video>
 
-      <script>
-
+    <script>
         function move_result2_Page() {
-        window.location.href = '{% url "result2" %}'; /* 이동하려는 페이지의 URL을 여기에 넣어주세요 */
+            window.location.href = '{% url "result2" %}';
         }
-
     </script>
 
     <button class="btnRed" onclick="move_result2_Page()">REPORT</button>

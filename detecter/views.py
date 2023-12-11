@@ -45,6 +45,7 @@ def upload_video(request):
                 destination.write(chunk)
 
         # Optionally, you can perform your illegal detection logic here
+        predict()
 
         return JsonResponse({'message': 'Video uploaded successfully.'})
 
@@ -121,6 +122,7 @@ def process_frame(frame, model, min_distance_threshold, frame_count, all_scooter
     if frame_count % 10 == 0:
         # YOLO를 이용하여 프레임 예측
         result = model.predict(frame, imgsz=640, conf=0.5)
+
         scooter_distances = calculate_illegal_parking(result, min_distance_threshold)
 
         # 유효한 거리가 있는 경우만 추가
@@ -131,11 +133,12 @@ def process_frame(frame, model, min_distance_threshold, frame_count, all_scooter
             # 결과를 프레임에 표시
             annotated_frame = result[0].plot()
 
-            # 프레임을 보여주기
-            plt.imshow(cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB))
-            plt.axis('off')
-            plt.show()
 
+def predict():
+    model = YOLO('detecter/model/best4.pt')
+    source = 'detecter/static/video/best.mp4'
+
+    model(source, save=True, project="detecter/static/result", name='best.mp4',conf=0.6)
 
 def main():
     model = YOLO('model/best4.pt')
@@ -146,6 +149,7 @@ def main():
     frame_count = 0
     min_distance_threshold = 4.0
     all_scooter_distances = {}  # 모든 킥보드 간 거리를 저장할 딕셔너리
+
 
     # 비디오 프레임 반복
     while cap.isOpened():
