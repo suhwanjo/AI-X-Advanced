@@ -1,5 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import numpy as np
+import cv2
+from ultralytics import YOLO
+import matplotlib.pyplot as plt
+from ultralytics.utils.plotting import Annotator
+import os
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     return render(request,'detecter/home.html')
@@ -18,19 +27,6 @@ def result2(request):
 
 def notice_view(request):
     return render(request, 'detecter/notice_view.html')
-
-
-# 불법 탐지 뷰
-import numpy as np
-import cv2
-from ultralytics import YOLO
-import matplotlib.pyplot as plt
-from ultralytics.utils.plotting import Annotator
-import os
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-
 
 @csrf_exempt  # Add this decorator to allow handling POST requests without CSRF token
 def upload_video(request):
@@ -138,13 +134,13 @@ def predict():
     model = YOLO('detecter/model/best4.pt')
     source = 'detecter/static/video/best.mp4'
 
-    model(source, save=True, project="detecter/static/result", name='best.mp4',conf=0.6)
+    model(source, save=True, project="detecter/static/result", name='best.mp4', conf=0.6)
 
 def main():
-    model = YOLO('model/best4.pt')
+    model = YOLO('detecter/model/best4.pt')
 
     # 비디오 파일 열기
-    cap = cv2.VideoCapture('static/video/best.mp4')
+    cap = cv2.VideoCapture('detecter/static/video/best.mp4')
 
     frame_count = 0
     min_distance_threshold = 4.0
