@@ -28,6 +28,7 @@ def result2(request):
 def notice_view(request):
     return render(request, 'detecter/notice_view.html')
 
+
 @csrf_exempt  # Add this decorator to allow handling POST requests without CSRF token
 def upload_video(request):
     if request.method == 'POST' and request.FILES.get('video'):

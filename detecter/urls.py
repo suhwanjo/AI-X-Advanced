@@ -11,3 +11,4 @@ urlpatterns = [
     path('home/notice_view', views.notice_view, name='notice_view')
 
 ]
+

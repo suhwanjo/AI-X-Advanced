@@ -35,7 +35,7 @@
     <button class="btnRed" onclick="showLoading()">REPORT</button>
     <!-- 로딩 창 -->
     <div class="loading" id="loading">
-        <img src="{% static 'img/loading.gif' %}" alt="Loading">
+        <img src="{% static 'img/수뭉이.gif' %}" alt="Loading">
     </div>
 
     <script>
@@ -104,6 +104,9 @@
         function showLoading() {
             const loading = document.getElementById('loading');
             loading.style.display = 'flex'; // 로딩 창 표시
+            loading.style.backgroundColor = 'transparent'; // 배경색 투명
+            const img = document.querySelector('img');
+            img.style.backgroundColor = 'transparent';
             setTimeout(redirectToDetection, 8000); // 3초 후에 분석 페이지로 이동 (3초는 예시입니다)
         }
     </script>
