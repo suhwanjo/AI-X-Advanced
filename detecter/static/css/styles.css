@@ -36,6 +36,17 @@ body {
  width: 1000px;
  display: block;
 }
+
+.result_image{
+ margin: 0 auto;
+ width: 1000px;
+ display: block;
+}
+
+.result_text{
+
+}
+
 input[type="file"] {
   position: fixed;
   bottom: 10px; /* 하단 여백 조정 */
