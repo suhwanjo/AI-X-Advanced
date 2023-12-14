@@ -43,6 +43,7 @@ body {
     display: block;
     border: 2px solid #000000;
     margin-bottom: 10px;
+    background: #fafafa;
 }
 
 .result_image {

@@ -23,7 +23,9 @@ def notice(request):
     return render(request,'detecter/notice.html')
 
 def result2(request):
-    return render(request,'detecter/result2.html')
+    context = detecting()
+    print(context)
+    return render(request,'detecter/result2.html', {'context':context} )
 
 def notice_view(request):
     return render(request, 'detecter/notice_view.html')
@@ -138,6 +140,7 @@ def predict():
     model(source, save=True, project="detecter/static/result", name='best.mp4', conf=0.6)
 
 def detecting():
+
     model = YOLO('detecter/model/best4.pt')
 
     # 비디오 파일 열기
@@ -327,10 +330,8 @@ def detecting():
     cv2.imwrite("detecter/static/result/image/detection_result.png", annotated_frame2)
 
     context = {
-                'scooter_index': scooter_index,
-                'avg_distance_for_scooter': avg_distance_for_scooter,
+                'all_scooter_distances': all_scooter_distances
              }
 
-    #print(f"영상에서 불법 주차된 킥보드 수 : {illegally_parked_count}")
-    return render(request, 'detecter/result2.html', context)
+    return context
 
