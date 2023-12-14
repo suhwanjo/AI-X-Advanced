@@ -37,15 +37,56 @@ body {
  display: block;
 }
 
-.result_image{
- margin: 0 auto;
- width: 1000px;
- display: block;
+.result_body{
+    margin: 0 auto;
+    width: 1000px;
+    display: block;
+    border: 2px solid #000000;
+    margin-bottom: 10px;
 }
 
-.result_text{
-
+.result_image {
+    margin: 0 auto;
+    width: 1000px;
+    display: block;
 }
+
+.result_text_1 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.result_text_1 p {
+    background-color: #F4F4F4;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 90%; /* Set the width to 100% */
+}
+
+.result_text_2 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.result_text_2 p {
+    background-color: #FF6666;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 90%; /* Set the width to 100% */
+}
+
 
 input[type="file"] {
   position: fixed;

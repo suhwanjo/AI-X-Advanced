@@ -137,7 +137,7 @@ def predict():
 
     model(source, save=True, project="detecter/static/result", name='best.mp4', conf=0.6)
 
-def main():
+def detecting():
     model = YOLO('detecter/model/best4.pt')
 
     # 비디오 파일 열기
@@ -158,9 +158,6 @@ def main():
             process_frame(frame, model, min_distance_threshold, frame_count, all_scooter_distances)
         else:
             break
-
-    print(
-        "-----------------------------------------------------------------------------------------------------------------------")
 
     # 각 킥보드에 대한 거리를 저장할 딕셔너리
     scooter_distances_across_frames = {}
@@ -197,10 +194,6 @@ def main():
             cap.set(cv2.CAP_PROP_POS_FRAMES, min_diff_frame - 1)
             success, closest_frame = cap.read()
 
-            plt.imshow(cv2.cvtColor(closest_frame, cv2.COLOR_BGR2RGB))
-            plt.axis('off')
-            plt.title(f"Frame {min_diff_frame}")
-            plt.show()
 
             ## 여기부터 출력 결과 후처리 (타원,불법 텍스트 출력)
             result2 = model.predict(closest_frame, imgsz=640, conf=0.5)  # 다시 모델 추론
@@ -246,7 +239,7 @@ def main():
 
                 cv2.ellipse(annotated_frame2, center, axes, 0, 0, 360, color, thickness)
 
-                flag_image = cv2.imread('bus_stop.png')
+                flag_image = cv2.imread('detecter/static/img/bus_stop.png')
                 # violation_image의 배경을 흑백 이미지로 변환
                 gray_flag_image = cv2.cvtColor(flag_image, cv2.COLOR_BGR2GRAY)
                 # 흑백 이미지에서 검은색을 투명으로 변경
@@ -275,7 +268,7 @@ def main():
                 text_position = (scooter_coords[0], scooter_coords[1])
                 if bus_stop_coords[0] - axes[0] < text_position[0] < bus_stop_coords[0] + axes[0]:
 
-                    violation_image = cv2.imread('violation2.png')
+                    violation_image = cv2.imread('detecter/static/img/violation2.png')
 
                     # violation_image의 배경을 흑백 이미지로 변환
                     gray_violation_image = cv2.cvtColor(violation_image, cv2.COLOR_BGR2GRAY)
@@ -303,7 +296,7 @@ def main():
                                     text_position[0] + j
                                 ] = resized_bgr_violation_image[i, j]
                 else:
-                    no_violation_image = cv2.imread('non_violation.png')
+                    no_violation_image = cv2.imread('detecter/static/img/non_violation.png')
 
                     # violation_image의 배경을 흑백 이미지로 변환
                     gray_no_violation_image = cv2.cvtColor(no_violation_image, cv2.COLOR_BGR2GRAY)
@@ -331,17 +324,13 @@ def main():
                                     text_position[0] + j
                                 ] = resized_bgr_no_violation_image[i, j]
 
-            # 이미지 표시
-            plt.imshow(cv2.cvtColor(annotated_frame2, cv2.COLOR_BGR2RGB))
-            plt.axis('off')
-            plt.title('Visualization')
-            plt.show()
+    cv2.imwrite("detecter/static/result/image/detection_result.png", annotated_frame2)
 
-            print(
-                "-----------------------------------------------------------------------------------------------------------------------")
+    context = {
+                'scooter_index': scooter_index,
+                'avg_distance_for_scooter': avg_distance_for_scooter,
+             }
 
-    print(f"영상에서 불법 주차된 킥보드 수 : {illegally_parked_count}")
+    #print(f"영상에서 불법 주차된 킥보드 수 : {illegally_parked_count}")
+    return render(request, 'detecter/result2.html', context)
 
-
-if __name__ == "__main__":
-    main()

@@ -30,12 +30,26 @@
         현재 브라우저는 video 태그를 지원하지 않습니다.
     </video>
 
+    <button class="btnRed" onclick="showLoading_2()">REPORT</button>
+    <!-- 로딩 창 -->
+    <div class="loading" id="loading">
+        <img src="{% static 'img/스뭉이2.gif' %}" alt="Loading">
+    </div>
+
     <script>
-        function move_result2_Page() {
-            window.location.href = '{% url "result2" %}';
+
+        function redirectToResult2() {
+            window.location.href = '{% url "detecting" %}'; // 분석 페이지의 실제 주소로 변경해주세요.
+        }
+        function showLoading_2() {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'flex'; // 로딩 창 표시
+            loading.style.backgroundColor = 'transparent'; // 배경색 투명
+            const img = document.querySelector('img');
+            img.style.backgroundColor = 'transparent';
+            setTimeout(redirectToResult2, 5000); // 3초 후에 분석 페이지로 이동 (3초는 예시입니다)
         }
     </script>
 
-    <button class="btnRed" onclick="move_result2_Page()">REPORT</button>
 </body>
 </html>
