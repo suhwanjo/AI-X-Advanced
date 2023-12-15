@@ -17,14 +17,14 @@
         <div class="box">
           <ul>
             <li><a href='{% url "home" %}'>home</a></li>
-            <li><a href='{% url "upload" %}'>reporting service</a></li>
-            <li><a href='{% url "result" %}'>reporting result</a></li>
+            <li><a href='{% url "upload" %}'>detect</a></li>
+            <li><a href='{% url "result" %}'>analyze</a></li>
             <li><a href='{% url "notice" %}'>notice</a></li>
           </ul>
 
         </div>
     </header>
-    <h1>Video upload and analysis</h1>
+    <h1>select Video and detect</h1>
     <video class="video_center" width  = "500"  height="500" controls id="videoPlayer" onended="analyzeVideo()">
         현재 브라우저는 video 태그를 지원하지 않습니다.
     </video>
@@ -32,7 +32,7 @@
     <!-- 분석하기 버튼 추가 -->
     <button class = "btnBlue" onclick="document.getElementById('videoInput').click()">SELECT VIDEO</button>
     <input type="file" accept="video/*" id="videoInput" style="display: none;" onchange="playAndAnalyze()">
-    <button class="btnRed" onclick="showLoading()">REPORT</button>
+    <button class="btnRed" onclick="showLoading()">DETECT</button>
     <!-- 로딩 창 -->
     <div class="loading" id="loading">
         <img src="{% static 'img/수뭉이.gif' %}" alt="Loading">
