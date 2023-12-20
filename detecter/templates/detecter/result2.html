@@ -30,12 +30,10 @@
             <img src="{% static 'result/image/detection_result.png' %}" class = "result_image" width="500" height="500" >
         </div>
         <div class = "result_text_1">
-            <!--<p>  KICKBOARD<{{context.scooter_index}}> : {{context.avg_distance_for_scooter}}m - Regular Tow Area </p>-->
-            <p>  SCOOTER<0> : 5.66m - Regular Tow Zone </p>
+            <p>  KICKBOARD<0> : {{ context.all_scooter_distances_2|floatformat:2  }}m - Regular Tow Area </p>
         </div>
         <div class = "result_text_2">
-            <!--<p>  KICKBOARD<{{context.scooter_index}}> : {{context.avg_distance_for_scooter}}m - Immediate Tow Area </p>-->
-            <p>  SCOOTER<1> : 0.78m - Immediate Tow Zone </p>
+            <p>  KICKBOARD <1> : {{ context.all_scooter_distances_1|floatformat:2  }}m - Immediate Tow Area </p>
         </div>
         </div>
       <script>

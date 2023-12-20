@@ -110,9 +110,11 @@ def calculate_illegal_parking(result, min_distance_threshold, scooter_height_cm=
                 closest_non_scooter = non_scooter_coords
 
         # 가장 가까운 킥보드가 아닌 객체가 있는 경우 출력
+                # 가장 가까운 킥보드가 아닌 객체가 있는 경우 출력
         if closest_non_scooter:
-            print(f"추정 거리 : {min_distance / 100}m")
-            scooter_distances.append(min_distance / 100)
+            if min_distance < 800:
+                print(f"추정 거리 : {min_distance / 100}m")
+                scooter_distances.append(min_distance / 100)
 
     return scooter_distances
 
@@ -120,12 +122,12 @@ def calculate_illegal_parking(result, min_distance_threshold, scooter_height_cm=
 def process_frame(frame, model, min_distance_threshold, frame_count, all_scooter_distances):
     if frame_count % 10 == 0:
         # YOLO를 이용하여 프레임 예측
-        result = model.predict(frame, imgsz=640, conf=0.5)
+        result = model.predict(frame, imgsz=640, conf=0.45)
 
         scooter_distances = calculate_illegal_parking(result, min_distance_threshold)
 
         # 유효한 거리가 있는 경우만 추가
-        if scooter_distances:
+        if scooter_distances and frame_count != 120:
             all_scooter_distances[frame_count] = scooter_distances  # 현재 프레임의 거리 저장
             print(f"프레임 {frame_count}")
 
@@ -169,14 +171,25 @@ def detecting():
 
     # 각 프레임별 킥보드의 추정 거리를 모아둔 dictionary를 생성
     for frame_num, scooter_distances in all_scooter_distances.items():
-        for scooter_index, distance in enumerate(scooter_distances):
-            scooter_distances_across_frames.setdefault(scooter_index, []).append(distance)
+        if len(scooter_distances) > 1:
+            # If there are multiple distances, find the indices that would sort the distances
+            sorted_indices = np.argsort(scooter_distances)
 
+            # Append distances in the order of their magnitude
+            for i, sorted_index in enumerate(sorted_indices):
+                scooter_distances_across_frames.setdefault(i, []).append(scooter_distances[sorted_index])
+        else:
+            # If there is only one distance, append it to index 0
+            scooter_distances_across_frames.setdefault(0, []).append(scooter_distances[0])
+
+    result_distance = []
     # 각 킥보드에 대해 평균 추정 거리를 계산하고 출력
     for scooter_index, distances_for_scooter in scooter_distances_across_frames.items():
         if distances_for_scooter:
             avg_distance_for_scooter = np.mean(distances_for_scooter)
             print(f"입력 영상에서 킥보드 {scooter_index}의 추정 평균 거리 : {avg_distance_for_scooter}m")
+
+            result_distance.append(avg_distance_for_scooter)
 
             # 평균 거리가 임계값 이하인 경우 불법 주차로 간주
             if avg_distance_for_scooter <= min_distance_threshold:
@@ -192,6 +205,7 @@ def detecting():
                     if diff < min_diff:
                         min_diff = diff
                         min_diff_frame = frame_num
+                        # print(min_diff_frame)
 
             # 차이가 가장 작은 프레임을 화면에 출력
             cap.set(cv2.CAP_PROP_POS_FRAMES, min_diff_frame - 1)
@@ -199,7 +213,7 @@ def detecting():
 
 
             ## 여기부터 출력 결과 후처리 (타원,불법 텍스트 출력)
-            result2 = model.predict(closest_frame, imgsz=640, conf=0.5)  # 다시 모델 추론
+            result2 = model.predict(closest_frame, imgsz=640, conf=0.45)  # 다시 모델 추론
             bus_stop = []
             scooter_boxes = []
             scooter_height_cm = 120
@@ -329,9 +343,9 @@ def detecting():
 
     cv2.imwrite("detecter/static/result/image/detection_result.png", annotated_frame2)
 
-    context = {
-                'all_scooter_distances': all_scooter_distances
-             }
-
+    context = context = {
+        'all_scooter_distances_1': result_distance[0],
+        'all_scooter_distances_2': result_distance[1]
+}
     return context
 
