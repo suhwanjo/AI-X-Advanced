@@ -24,7 +24,7 @@ def notice(request):
 
 def result2(request):
     context = detecting()
-    print(context)
+    #print(context)
     return render(request,'detecter/result2.html', {'context':context} )
 
 def notice_view(request):
@@ -113,7 +113,7 @@ def calculate_illegal_parking(result, min_distance_threshold, scooter_height_cm=
                 # 가장 가까운 킥보드가 아닌 객체가 있는 경우 출력
         if closest_non_scooter:
             if min_distance < 800:
-                print(f"추정 거리 : {min_distance / 100}m")
+                #print(f"추정 거리 : {min_distance / 100}m")
                 scooter_distances.append(min_distance / 100)
 
     return scooter_distances
@@ -129,7 +129,7 @@ def process_frame(frame, model, min_distance_threshold, frame_count, all_scooter
         # 유효한 거리가 있는 경우만 추가
         if scooter_distances and frame_count != 120:
             all_scooter_distances[frame_count] = scooter_distances  # 현재 프레임의 거리 저장
-            print(f"프레임 {frame_count}")
+            #print(f"프레임 {frame_count}")
 
             # 결과를 프레임에 표시
             annotated_frame = result[0].plot()
@@ -187,7 +187,7 @@ def detecting():
     for scooter_index, distances_for_scooter in scooter_distances_across_frames.items():
         if distances_for_scooter:
             avg_distance_for_scooter = np.mean(distances_for_scooter)
-            print(f"입력 영상에서 킥보드 {scooter_index}의 추정 평균 거리 : {avg_distance_for_scooter}m")
+            #print(f"입력 영상에서 킥보드 {scooter_index}의 추정 평균 거리 : {avg_distance_for_scooter}m")
 
             result_distance.append(avg_distance_for_scooter)
 
