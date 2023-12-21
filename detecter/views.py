@@ -14,6 +14,7 @@ def home(request):
     return render(request,'detecter/home.html')
 
 def upload(request):
+    upload_video(request)
     return render(request,'detecter/upload.html')
 
 def result(request):
